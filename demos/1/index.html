@@ -8,8 +8,30 @@
 <script src="../../libs/jquery/1.5.1/jquery.js"></script>
 <script src="../../jquery.currentdots.js"></script>
 <script>
+
+if(!window.console) {
+  window.console = {};
+  window.console.log = $.noop;
+}
+
 $(function() {
 
+  $('.testset').each(function(i, el) {
+    var $el = $(el);
+    $el.currentDots({
+      selector_item: '.item',
+      class_activeItem: 'current'
+    });
+    var instance = $el.data('currentDots');
+    instance.on('itemclick', function(data) {
+      console.log(data.index);
+    });
+    $el.delegate('[data-currentdots-to]', 'click', function() {
+      var index = $(this).data('currentdots-to');
+      console.log(index);
+      instance.to(index);
+    });
+  });
 
 });
 </script>
@@ -21,15 +43,13 @@ $(function() {
   <div class="currentDots"><!--
   --><div class="item"><span></span></div><!--
   --><div class="item"><span></span></div><!--
-  --><div class="item current"><span></span></div><!--
+  --><div class="item"><span></span></div><!--
   --><div class="item"><span></span></div><!--
   --><div class="item"><span></span></div><!--
   --><div class="item"><span></span></div><!--
   --></div>
 
   <div class="buttons">
-    <button>prev()</button>
-    <button>next()</button>
     <button data-currentdots-to="0">to(0)</button>
     <button data-currentdots-to="1">to(1)</button>
     <button data-currentdots-to="2">to(2)</button>
@@ -43,15 +63,13 @@ $(function() {
 <div class="testset">
 
   <div class="currentDots"><!--
-  --><div class="item current"><span></span></div><!--
+  --><div class="item"><span></span></div><!--
   --><div class="item"><span></span></div><!--
   --><div class="item"><span></span></div><!--
   --><div class="item"><span></span></div><!--
   --></div>
 
   <div class="buttons">
-    <button>prev()</button>
-    <button>next()</button>
     <button data-currentdots-to="0">to(0)</button>
     <button data-currentdots-to="1">to(1)</button>
     <button data-currentdots-to="2">to(2)</button>
