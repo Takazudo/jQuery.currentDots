@@ -10,6 +10,18 @@ button {
 }
 body {
   font-family:sans-serif;
+  text-align:center;
+}
+h1 {
+  font-size: 18px;
+  padding:20px 0 10px;
+}
+h2 {
+  font-size: 13px;
+  padding:20px 0 8px;
+}
+h1 + h2 {
+  padding-top:0;
 }
 .currentDots {
   text-align:center;
@@ -26,6 +38,9 @@ body {
     border-radius:5px;
     font-size:0px;
     cursor:pointer;
+  }
+  .currentDots .normal{
+    background:#999;
   }
   .currentDots .current span{
     display:inline-block;

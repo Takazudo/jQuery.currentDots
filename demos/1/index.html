@@ -16,11 +16,29 @@ if(!window.console) {
 
 $(function() {
 
-  $('.testset').each(function(i, el) {
+  $('#testset1').each(function(i, el) {
     var $el = $(el);
     $el.currentDots({
       selector_item: '.item',
       class_activeItem: 'current'
+    });
+    var instance = $el.data('currentDots');
+    instance.on('itemclick', function(data) {
+      console.log(data.index);
+    });
+    $el.delegate('[data-currentdots-to]', 'click', function() {
+      var index = $(this).data('currentdots-to');
+      console.log(index);
+      instance.to(index);
+    });
+  });
+
+  $('#testset2').each(function(i, el) {
+    var $el = $(el);
+    $el.currentDots({
+      selector_item: '.item',
+      class_activeItem: 'current',
+      class_inactiveItem: 'normal'
     });
     var instance = $el.data('currentDots');
     instance.on('itemclick', function(data) {
@@ -38,7 +56,11 @@ $(function() {
 </head>
 <body>
 
-<div class="testset">
+<h1>jQuery.currentDots</h1>
+
+<h2>basic</h2>
+
+<div class="testset" id="testset1">
 
   <div class="currentDots"><!--
   --><div class="item"><span></span></div><!--
@@ -60,7 +82,9 @@ $(function() {
 
 </div>
 
-<div class="testset">
+<h2>with inactiveClass</h2>
+
+<div class="testset" id="testset2">
 
   <div class="currentDots"><!--
   --><div class="item"><span></span></div><!--

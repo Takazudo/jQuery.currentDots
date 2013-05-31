@@ -90,14 +90,16 @@
 
       DotItem.defaults = {
         index: null,
-        class_activeItem: null
+        class_activeItem: null,
+        class_inactiveItem: null
       };
 
       function DotItem($el, options) {
         this.$el = $el;
-        this.active = false;
+        this.active = null;
         this.options = $.extend({}, ns.DotItem.defaults, options);
         this._eventify();
+        this.deactivate();
       }
 
       DotItem.prototype._eventify = function() {
@@ -119,6 +121,9 @@
         }
         this.active = false;
         this.$el.removeClass(this.options.class_activeItem);
+        if (this.options.class_inactiveItem) {
+          this.$el.addClass(this.options.class_inactiveItem);
+        }
         return this;
       };
 
@@ -128,6 +133,9 @@
         }
         this.active = true;
         this.$el.addClass(this.options.class_activeItem);
+        if (this.options.class_inactiveItem) {
+          this.$el.removeClass(this.options.class_inactiveItem);
+        }
         return this;
       };
 
@@ -162,6 +170,9 @@
             class_activeItem: _this.options.class_activeItem,
             index: i
           };
+          if (_this.options.class_inactiveItem) {
+            itemOptions.class_inactiveItem = _this.options.class_inactiveItem;
+          }
           item = new ns.DotItem($(el), itemOptions);
           item.on('click', function(data) {
             _this.to(data.index);

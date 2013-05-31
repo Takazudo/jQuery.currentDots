@@ -59,12 +59,14 @@ do ($=jQuery, window=window, document=document) ->
     @defaults =
       index: null
       class_activeItem: null
+      class_inactiveItem: null
 
     constructor: (@$el, options) ->
 
-      @active = false
+      @active = null
       @options = $.extend {}, ns.DotItem.defaults, options
       @_eventify()
+      @deactivate()
 
     _eventify: ->
 
@@ -81,6 +83,8 @@ do ($=jQuery, window=window, document=document) ->
       return this if @active is false
       @active = false
       @$el.removeClass @options.class_activeItem
+      if @options.class_inactiveItem
+        @$el.addClass @options.class_inactiveItem
       return this
 
     activate: ->
@@ -88,6 +92,8 @@ do ($=jQuery, window=window, document=document) ->
       return this if @active is true
       @active = true
       @$el.addClass @options.class_activeItem
+      if @options.class_inactiveItem
+        @$el.removeClass @options.class_inactiveItem
       return this
 
 
@@ -116,6 +122,8 @@ do ($=jQuery, window=window, document=document) ->
         itemOptions =
           class_activeItem: @options.class_activeItem
           index: i
+        if @options.class_inactiveItem
+          itemOptions.class_inactiveItem = @options.class_inactiveItem
         item = new ns.DotItem $(el), itemOptions
         item.on 'click', (data) =>
           @to data.index
