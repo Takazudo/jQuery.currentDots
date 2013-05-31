@@ -1,0 +1,44 @@
+* {
+  margin:0;
+  padding:0;
+}
+a {
+  color:#00f;
+}
+button {
+  padding:4px;
+}
+body {
+  font-family:sans-serif;
+}
+.currentDots {
+  text-align:center;
+}
+  .currentDots .item{
+    display:inline-block;
+    *display:inline;
+    *zoom:1; /* ie */
+    vertical-align:middle;
+    width:10px;
+    height:10px;
+    background:#666;
+    margin:0 2px;
+    border-radius:5px;
+    font-size:0px;
+  }
+  .currentDots .current span{
+    display:inline-block;
+    *display:inline;
+    *zoom:1; /* ie */
+    vertical-align:top;
+    width:6px;
+    height:6px;
+    margin:2px 0 0;
+    background:#fff;
+    border-radius:3px;
+  }
+
+.testset {
+  text-align:center;
+  padding:10px 0;
+}
