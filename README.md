@@ -12,7 +12,8 @@ see demos
 
 ## Depends
 
-jQuery 1.9.1 (>=1.5.1)
+* [EveEve](https://github.com/Takazudo/EveEve)
+* jQuery 1.9.1 (>=1.5.1)
 
 ## Browsers
 

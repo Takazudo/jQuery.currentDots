@@ -1,6 +1,6 @@
 /*! jQuery.currentDots (https://github.com/Takazudo/jQuery.currentDots)
  * lastupdate: 2013-06-13
- * version: 0.2.0
+ * version: 0.3.0
  * author: 'Takazudo' Takeshi Takatsudo <takazudo@gmail.com>
  * License: MIT */
 (function() {
